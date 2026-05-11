@@ -1,3 +1,15 @@
+/* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+AR+Guides&family=Rubik+Mono+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Add this layer to apply the font globally */
+@layer base {
+  html {
+    font-family: 'Inter', sans-serif;
+  }
+}
