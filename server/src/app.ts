@@ -3,6 +3,8 @@ import cors from 'cors';
 import helmet from 'helmet';
 import { errorHandler } from './middleware/errorHandler';
 import productRoutes from './routes/products';
+import categoryRoutes from './routes/categories';
+import salesRoutes from './routes/sales';
 
 const app = express();
 
@@ -12,6 +14,8 @@ app.use(express.json());
 
 // routes
 app.use('/api/products', productRoutes);
+app.use('/api/categories', categoryRoutes);
+app.use('/api/sales', salesRoutes);
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
