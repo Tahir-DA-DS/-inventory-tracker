@@ -1,6 +1,6 @@
 // client/src/api/sales.ts
 import apiService from './apiService';
-import { ApiResponse, Sale, CreateSaleInput } from '../types/api';
+import type { ApiResponse, Sale, CreateSaleInput } from '../types/api';
 
 export const recordSale = async (data: CreateSaleInput): Promise<ApiResponse<Sale>> => {
   const response = await apiService.post<ApiResponse<Sale>>('/sales', data);

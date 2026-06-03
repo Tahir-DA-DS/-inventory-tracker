@@ -1,6 +1,6 @@
 // client/src/api/dashboard.ts
 import apiService from './apiService';
-import { ApiResponse, DashboardData } from '../types/api';
+import type { ApiResponse, DashboardData } from '../types/api';
 
 export const getDashboardData = async (): Promise<ApiResponse<DashboardData>> => {
   // For now, we'll use mock data as the backend endpoint is still being built

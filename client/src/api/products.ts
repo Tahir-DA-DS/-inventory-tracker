@@ -1,6 +1,6 @@
 // client/src/api/products.ts
 import apiService from './apiService';
-import { ApiResponse, Product, CreateProductInput, UpdateProductInput, Category } from '../types/api';
+import type { ApiResponse, Product, CreateProductInput, UpdateProductInput, Category } from '../types/api';
 
 export const getProducts = async (): Promise<ApiResponse<Product[]>> => {
   const response = await apiService.get<ApiResponse<Product[]>>('/products');
