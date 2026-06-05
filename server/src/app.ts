@@ -5,6 +5,7 @@ import { errorHandler } from './middleware/errorHandler';
 import productRoutes from './routes/products';
 import categoryRoutes from './routes/categories';
 import salesRoutes from './routes/sales';
+import dashboardRoutes from './routes/dashboard';
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.json());
 app.use('/api/products', productRoutes);
 app.use('/api/categories', categoryRoutes);
 app.use('/api/sales', salesRoutes);
+app.use('/api/dashboard', dashboardRoutes);
 
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
