@@ -8,9 +8,9 @@ const ProductSchema = z.object({
   category_id: z.string().uuid(),
   name: z.string().min(1),
   sku: z.string().min(1),
-  price: z.number().positive(),
-  stock_qty: z.number().int().min(0),
-  low_stock_threshold: z.number().int().min(0).default(10),
+  price: z.coerce.number().positive(),        // ← coerce string to number
+  stock_qty: z.coerce.number().int().min(0),  // ← coerce just in case
+  low_stock_threshold: z.coerce.number().int().min(0).default(10),
 });
 
 
@@ -40,7 +40,8 @@ router.patch('/:id', async (req, res, next) => {
     const body = UpdateSchema.parse(req.body);
     const [product] = await db('products')
       .where({ id: req.params.id })
-      .update({ ...body, updated_at: db.fn.now() })
+      .update({ ...body, updated_at: new Date().toISOString() })
+      // .update({ ...body, updated_at: db.fn.now() })
       .returning('*');
     if (!product) return res.status(404).json({ message: 'Product not found' });
     res.json({ data: product });

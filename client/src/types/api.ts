@@ -70,9 +70,9 @@ export interface SaleItem {
 
 export interface Sale {
   id: string;
-  sale_date: string; // ISO string format
+  sold_at: string;        
   items: SaleItem[];
-  total_amount: string; // Total for the entire sale
+  total_amount: string;
   notes?: string;
   created_at: string;
 }
@@ -80,7 +80,7 @@ export interface Sale {
 export interface CreateSaleItemInput {
   product_id: string;
   quantity: number;
-  unit_price: string; // Price at the time of sale, can differ from current product price
+  unit_price: number; // Price at the time of sale, can differ from current product price
 }
 
 export interface CreateSaleInput {

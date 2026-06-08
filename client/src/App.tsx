@@ -1,18 +1,18 @@
-// App.tsx
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
-import ProductsPage from './pages/ProductsPage';
-import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
-import SignupPage from './pages/SignupPage';
-import { AuthProvider } from './context/AuthContext';
-import ProtectedRoute from './components/ProtectedRoute';
-import Layout from './components/Layout'; // Import the Layout component
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'; // Import TanStack Query
-import { ReactQueryDevtools } from '@tanstack/react-query-devtools'; // Import Devtools (optional)
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import { Toaster } from "react-hot-toast";
+import SalesPage from "./pages/SalesPage";
+import CategoriesPage from "./pages/CategoriesPage";
+import ProductsPage from "./pages/ProductsPage";
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import SignupPage from "./pages/SignupPage";
+import { AuthProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
+import Layout from "./components/Layout";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
-// Create a client for TanStack Query
 const queryClient = new QueryClient();
 
 function App() {
@@ -22,8 +22,6 @@ function App() {
         <Routes>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
-
-          {/* Protected routes wrapped with Layout */}
           <Route
             path="/"
             element={
@@ -34,20 +32,39 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route // THIS IS THE UPDATED ROUTE
+          <Route
             path="/products"
             element={
               <ProtectedRoute>
                 <Layout>
-                  <ProductsPage /> {/* Use the ProductsPage here */}
+                  <ProductsPage />
                 </Layout>
               </ProtectedRoute>
             }
           />
-          {/* ... (other placeholder routes) ... */}
+          <Route
+            path="/sales"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <SalesPage />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/categories"
+            element={
+              <ProtectedRoute>
+                <Layout>
+                  <CategoriesPage />
+                </Layout>
+              </ProtectedRoute>
+            }
+          />
         </Routes>
         <ReactQueryDevtools initialIsOpen={false} />
-        <Toaster /> {/* Add Toaster here */}
+        <Toaster />
       </QueryClientProvider>
     </AuthProvider>
   );
