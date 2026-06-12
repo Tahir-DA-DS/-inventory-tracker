@@ -19,4 +19,24 @@ router.post('/', async (req, res, next) => {
   } catch (err) { next(err); }
 });
 
+router.patch('/:id', async (req, res, next) => {
+  try {
+    const { name } = z.object({ name: z.string().min(1) }).parse(req.body);
+    const [category] = await db('categories')
+      .where({ id: req.params.id })
+      .update({ name })
+      .returning('*');
+    if (!category) return res.status(404).json({ message: 'Category not found' });
+    res.json({ data: category });
+  } catch (err) { next(err); }
+});
+
+router.delete('/:id', async (req, res, next) => {
+  try {
+    const deleted = await db('categories').where({ id: req.params.id }).delete();
+    if (!deleted) return res.status(404).json({ message: 'Category not found' });
+    res.json({ message: 'Category deleted' });
+  } catch (err) { next(err); }
+});
+
 export default router;
