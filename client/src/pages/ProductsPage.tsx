@@ -9,7 +9,7 @@ import {
   updateProduct,
   deleteProduct,
 } from '../api/products';
-import type { Product, CreateProductInput, UpdateProductInput, Category } from '../types/api';
+import type { Product, CreateProductInput, UpdateProductInput} from '../types/api';
 import ProductTable from '../components/products/ProductTable';
 import ProductFormModal from '../components/products/ProductFormModal';
 import DeleteConfirmationModal from '../components/common/DeleteConfirmationModal';
