@@ -4,7 +4,7 @@ import React, { createContext, useState, useContext, useEffect, ReactNode } from
 interface User {
   id: string;
   email: string;
-  role: 'ADMIN' | 'STAFF';
+  role: string;
   // Add other user fields as they become available from the backend
 }
 
