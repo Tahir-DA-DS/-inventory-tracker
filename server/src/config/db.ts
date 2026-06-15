@@ -9,6 +9,7 @@ const db = knex({
     user: env.db.user,
     password: env.db.password,
     database: env.db.name,
+    ssl: env.nodeEnv === 'production' ? { rejectUnauthorized: false } : false,
   },
   pool: { min: 2, max: 10 },
 });

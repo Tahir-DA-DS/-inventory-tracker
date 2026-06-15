@@ -11,15 +11,19 @@ import dashboardRoutes from './routes/dashboard';
 
 const app = express();
 
+const allowedOrigins = process.env.CORS_ORIGIN
+  ? process.env.CORS_ORIGIN.split(',')
+  : ['http://localhost:5173'];
+
 app.use(helmet());
-app.use(cors({ origin: 'http://localhost:5173' }));
+app.use(cors({ origin: allowedOrigins }));
 app.use(express.json());
 
 // public routes
 app.use('/api/auth', authRoutes);
 app.get('/health', (req, res) => res.json({ status: 'ok' }));
 
-// protected routes 
+// protected routes
 app.use('/api/products', authenticate, productRoutes);
 app.use('/api/categories', authenticate, categoryRoutes);
 app.use('/api/sales', authenticate, salesRoutes);
