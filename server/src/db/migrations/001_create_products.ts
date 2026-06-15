@@ -5,7 +5,7 @@ export async function up(knex: Knex) {
     t.uuid('id').primary().defaultTo(knex.raw('gen_random_uuid()'));
     t.string('name').notNullable();
     t.timestamps(true, true);
-  });...............
+  });
 
   await knex.schema.createTable('products', (t) => {
     t.uuid('id').primary().defaultTo(knex.raw('gen_random_uuid()'));
